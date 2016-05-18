@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section>
+    <div id="wrapper">
+
+        <form  role="form"  method="post" id = "registration" >
+            {% csrf_token %}
+               <h1>Registration</h1>
+               <p>
+                    <label><b>Username</b></label>
+                    <input id="username" name="username" required="required" type="text"
+                           placeholder="username should be alpha numeric"/>
+
+                </p>
+
+
+                <p><label><b>Email Id</b> </label>
+                    <input id="email_id" name="email_id" required="required" type="email" placeholder="youare@awesome.com" />
+                </p>
+
+               <p class="login button">
+                   <input type="submit" value="Continue" id="submit" />
+               </p>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <div id="wrapper">
+
+        <form  role="form"  method="post" action="{% url 'userSignup' %}">
+            {% csrf_token %}
+               <h1>Sign Up</h1>
+                Enter The code send by ashish to your email id
+               {{form.as_p}}
+               <p class="login button">
+                   <input type="submit" value="SignUp" />
+               </p>
+
+
+
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript">
+function CheckColors(val){
+ var element=document.getElementById('value');
+ if(val=='4')
+   element.style.display='block';
+ else
+   element.style.display='none';
+}
+
+</script>
+
+<body>
+<div class="nav">
+        <ul>
+            <li class="home"><a href="#">Home</a></li>
+            <li class="tutorials"><a class="active" href="#">Tutorials</a></li>
+            <li class="about"><a href="#">About</a></li>
+            <li class="news"><a href="#">Newsletter</a></li>
+            <li class="contact"><a href="#">Contact</a></li>
+      </ul>
+    </div>
+</body>
+
+
+<section>
+    <div id="wrapper">
+
+        <form  role="form"  method="post" action="{% url 'getData' %}">
+            <label>We hate to see you go! Is there anything we can do to help?/label>
+            {% csrf_token %}
+               <select name="val" onchange='CheckColors(this.value);'>
+                    <option value="1">Help me with my logs, I would like to see set up instructions</option>
+                    <option value="2">I don’t understand the app, I would like to see a demo</option>
+                    <option value="3">"I don’t see a value in this, tell me why I should keep using Loggly</option>
+                    <option value="4">Nothing I’ve made up my mind, please delete</option>
+                  </select>
+
+            <input type="text" name="comment" id="value" style='display:none;'/>
+               <p class=" btn">
+                   <input type="submit" value="Submit" id="color"/>
+               </p>
+
+
+
+        </form>
+    </div>
+</section>
+
+
+{% endblock %}

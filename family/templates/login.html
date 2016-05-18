@@ -1,0 +1,54 @@
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+
+
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+
+                    <div id="wrapper">
+
+                            <form  role="form"  method="post"  id = "loginform">
+
+
+                                 {% csrf_token %}
+                                <h1>Log in</h1>
+                                <p>
+
+                                    <input id="username" name="username" value="{{form.username.value| default_if_none:''}}" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
+                                </p>
+                                <p>
+
+                                    <input id="password" name="password" required="required" type="password" placeholder="P@ssW0rd" />
+                                </p>
+                                <p class="keeplogin">
+									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+									<label for="loginkeeping">Keep me logged in</label>
+								</p>
+
+                                <p class="login button">
+                                    <input type="submit" value="Login" onclick="myFunction()" />
+								</p>
+
+									Not a member yet ?
+									<a href="{% url 'register' %}">Join us</a>
+                                    <a href="{% url 'password_reset' %}">Forget Your Password</a>
+
+                            </form>
+                        </div>
+
+
+
+
+
+
+
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+
+
+</section>
+{% endblock %}
+
