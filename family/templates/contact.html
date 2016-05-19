@@ -1,25 +1,33 @@
 
-  {% extends "base.html" %}
 
 {% block content %}
- <section>
 
-     <div id="wrapper">
-     <h1>Contact Me</h1>
+{% include 'nav.html' %}
 
+<style>
 
+body {
+  text-align: center;
+  background: url("http://ga-dash.s3.amazonaws.com/production/assets/anna-bg.png");
+  background-size: cover;
+  background-position: center;
+  color:white;
+  font-family:helvetica;
+  }
 
+ img-circle {
+    border-radius: 50%;
+ }
 
-       <div class="container">
+</style>
 
-
+<img src =../static/images/test.png>
+<h1>Ashish Verma</h1>
+<p>Hi! I'm Ashish, A Delhi based Web developer . Say hello!</p>
+     <h1>Contact Me via web</h1>
         <a href="https://www.facebook.com/Ashish.Verma7690"><img src="http://res.cloudinary.com/kdjohar/image/upload/v1430312635/facebook_kyyfrd.png"></a>
         <a href="https://plus.google.com/"><img src="http://res.cloudinary.com/kdjohar/image/upload/v1430312634/google_eewyhi.png"></a>
 
 
 
-       </div>
-         </div>
-     </section>
-    <!--/ contact us -->
-  {% endblock %}
+{% endblock %}
