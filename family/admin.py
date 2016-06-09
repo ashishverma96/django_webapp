@@ -4,7 +4,8 @@ from models import *
 
 
 admin.site.register(userVerificationModel)
-
+admin.site.register(UserInfo)
+admin.site.register(photo)
 
 
 

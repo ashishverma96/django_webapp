@@ -14,13 +14,15 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    url(r'^setinfo', setdata, name='setdata'),
+    url(r'^setdata', setdata, name='setdata'),
     url(r'^getdata', getdata, name='getData'),
     url(r'^signup', userCredentials.signup, name='userSignup'),
+    url(r'^check_username', userCredentials.check_username_available, name='check_username'),
 
-    url(r'^register', userCredentials.register.as_view(), name='register'),
+    url(r'^register', userCredentials.register, name='register'),
     url(r'^aboutus', aboutus, name='aboutus'),
     url(r'^contact', contact, name='contact'),
+    url(r'^photo', photo_upload_view, name='photo'),
 
 
 

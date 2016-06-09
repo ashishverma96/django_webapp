@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% block content %}
+{% include 'base.html' %}
+
+{% include 'nav.html' %}
+<form method='POST' action='{{ photo }}' enctype='multipart/form-data'>{% csrf_token %}
+    {{ form.as_p }}
+    <input class='btn btn-default {{ submit_btn_class }}' type='submit' value='{{ submit_btn }}'/>
+</form>
+{% endblock %}

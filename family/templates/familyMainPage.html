@@ -1,7 +1,102 @@
-{% extends "base.html" %}
 
+{% extends "base.html" %}
 {% block content %}
 
 {% include 'nav.html' %}
+
+<style>
+
+    body {
+      font-family: helvetica, sans-serif;
+      margin: 0 auto;
+    h1{
+          color: rgba(255,255,255,1);
+
+          background-size: cover;
+          position: relative;
+          padding: 10px;
+          line-height: 28px;
+          text-align: justify;
+
+          bottom: 0;
+          margin: 0;
+    }
+
+    }
+
+
+
+    k {
+          color: rgba(255,255,255,1);
+          background: rgba(0,0,0,1);
+          background-size: cover;
+          position: relative;
+          padding: 10px;
+          line-height: 28px;
+          text-align: justify;
+
+          bottom: 0;
+          margin: 0;
+        }
+
+
+    .first{
+        background : url('../static/images/family_main.jpg');
+        background-size: cover;
+        height:300px; margin:0;  color:white;background-color:blue; position:fixed; width:400px;
+          padding: 10px;
+          position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 500px;
+
+        margin: auto;
+
+
+
+    }
+
+    .second{
+        background : url('../static/images/family_main.jpg');
+        background-size: cover;
+        height:300px; margin:0; padding: 10px; color:white;float:right; width:400px;
+
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 500px;
+        right: 0;
+    margin: auto;
+
+</style>
+
+<head>
+<title>Family</title>
+</head>
+
+<h1>Welcome to family Website</h1>
+
+<div class="first">
+<k>Get Info about your Family Members </k>
+<h1>Just Fill the name and get Information </h1>
+<input id="name" type="text"
+       placeholder="Name you want to search"/>
+    <p class="login button">
+                   <input type="submit" value="Continue" id="submit" />
+
+
+</div>
+
+
+ <a href="{% url 'setdata' %}">
+<div class="second">
+
+<p>Add Family Member</p>
+<h1>Add a new family Member</h1>
+
+</div>
+  </a>
+
 
 {% endblock %}

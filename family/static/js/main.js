@@ -14,6 +14,7 @@ $( document ).ready(function() {
                     regex: /((^[0-9]+[a-z])|(^[a-z]+[0-9])|(^[a-z]+[0-9])+ $)/
                     }
              }
+
         });
 
 
@@ -21,7 +22,19 @@ $( document ).ready(function() {
     });
 
 
-
+function CheckId() {
+$.get('/check_username/', {username: $('#username').val()},
+    function(data){
+        if(data == "True"){
+            $('#idval').html("You may use this ID");
+        } else {
+            $('#idval').html("Unavailable");
+        }
+});
+}
+function onChange(){
+ $("#username").change( function() {CheckId()});
+}
 
 
 

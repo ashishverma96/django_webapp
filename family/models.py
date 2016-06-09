@@ -29,15 +29,19 @@ VERIFICATION_QUESTION = (
 
 
 )
+
+
 class UserInfo(models.Model):
     name = models.CharField(max_length=100,blank = False)
-    sirname = models.CharField(max_length=100,blank = False)
+    last_name = models.CharField(max_length=100,blank = False)
+    father_name = models.CharField(max_length=100,blank = False)
     phone_no = models.CharField(max_length=10)
     age = models.IntegerField()
-    dateofbirth = models.CharField(max_length=100,blank=False)
+    date_of_birth = models.CharField(max_length=100,blank=False)
     Address = models.CharField(max_length=100,blank=True)
-    bloodgroup = models.CharField(choices=BLOOD_GROUP_CHOICES,max_length=10)
-    image = models.ImageField(blank = True)
+    blood_group = models.CharField(choices=BLOOD_GROUP_CHOICES,max_length=10)
+    image = models.ImageField(upload_to='/home/ashish/django_webapp/media',blank=False)
+
 
 class userVerificationModel(models.Model):
     username = models.CharField(max_length=100, blank=False)
@@ -48,6 +52,8 @@ class userVerificationModel(models.Model):
         return self.username
 
 
+class photo(models.Model):
+    image_name = models.ImageField(upload_to='/home/ashish/media', blank=True)
 
 
 

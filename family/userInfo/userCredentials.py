@@ -55,15 +55,35 @@ def signup(request):
             HttpResponse("Please fill all fields")
 
 
-from django.views.generic import View
 
-
-class register(View):
-    reg_form = verificationform()
-    def get(self,request):
+def register(request):
+    if request.method == "GET":
+        reg_form = verificationform()
         return render(request, 'userregister.html', {
-            'form': self.reg_form})
+            'form': reg_form})
 
+    if request.method == "POST":
+        reg_form = verificationform(request.POST)
+        if reg_form.is_valid():
+            try:
+                user_present = User.objects.get(username=reg_form.cleaned_data['username'])
+                if user_present:
+                    return HttpResponse('User Already Present', status=200)
+            except:
+                verification_code = random.randint(0, 9999)
+                userVerificationModel.objects.create(username=reg_form.cleaned_data['username'],
+                                                     code=verification_code,
+                                                     email=reg_form.cleaned_data['email_id'])
+                email_body = 'Verification Code :  %s' % verification_code
+                mail = send_mail('Account Varification Mail', email_body, 'akumarlpu@gmail.com',
+                                 [
+                                     reg_form.cleaned_data['email_id']])
+
+                signupform = UserSignUpform()
+                return render(request, 'signup.html', {
+                    'form': signupform})
+
+    """
     def post(self,request):
         if self.reg_form.is_valid():
             try:
@@ -81,7 +101,7 @@ class register(View):
                 signupform = UserSignUpform()
                 return render(request, 'signup.html', {
                     'form': signupform})
-
+    """
 
 def login(request):
     if request.method == "GET":
@@ -102,3 +122,6 @@ def login(request):
 
         else:
             print "form Invalid"
+
+def check_username_available(request):
+    return HttpResponse(False)

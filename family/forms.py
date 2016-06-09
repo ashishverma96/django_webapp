@@ -1,5 +1,6 @@
 from django import forms
 from models import UserInfo
+from models import photo
 from models import userVerificationModel
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
@@ -38,11 +39,12 @@ class familyform(forms.Form):
     #    fields = ['name','phone_no','age','image']
     name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
-    phone_no = forms.CharField(required=True)
+    phone_no = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '1234567890'}))
+    father_name = forms.CharField(required=True)
 
-    dateofbirth = forms.CharField(max_length=100, required=True,label="Date of Birth")
+    date_of_birth = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'mm/dd/yyyy'}))
     Address = forms.CharField(max_length=100, required=False)
-    bloodgroup = forms.ChoiceField(choices=BLOOD_GROUP_CHOICES,required=True)
+    blood_group = forms.ChoiceField(choices=BLOOD_GROUP_CHOICES,required=False)
     image = forms.ImageField(required=False)
 
 
@@ -66,3 +68,8 @@ class verificationform(forms.Form):
 
 class testform(forms.Form):
     bloodgroup = forms.ChoiceField(choices=BLOOD_GROUP_CHOICES, required=True)
+
+class PhotoUploadForm(forms.ModelForm):
+        class Meta:
+            model = photo
+            fields = ('image_name',)
